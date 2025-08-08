@@ -1,0 +1,1584 @@
+/* Dashboard页面专用变量定义 - 不与其他文件共享 */
+.dashboard,
+.dashboard * {
+  --primary-color: #3b82f6;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Dashboard页面样式 */
+.dashboard {
+  width: 100%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.stage-pills {
+  display: flex;
+  gap: 12px;
+}
+
+.stage-pill {
+  padding: 6px 12px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.stage-pill.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* 学习阶段进度条样式 - 线性进度条 */
+.stage-progress-container {
+  width: 100%;
+  margin-bottom: 20px;
+  background: #fdfdfd;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* 阶段标签行 */
+.stage-labels {
+  display: flex;
+  width: 100%;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.stage-wrapper {
+  position: relative;
+  border-right: 1px solid #e5e7eb;
+}
+
+.stage-wrapper:last-child {
+  border-right: none;
+}
+
+.stage-label {
+  text-align: center;
+  padding: 4px 8px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* 激活状态 */
+.stage-label.active {
+  background: #f0f9ff;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+}
+
+/* 停滞状态 - 需求文档要求的警示样式 */
+.stage-label.stalled {
+  background: #fffbeb;
+  border: 2px solid #f59e0b;
+  border-radius: 4px;
+  animation: stalledPulse 2s infinite;
+}
+
+/* 锁定状态 */
+.stage-label.locked {
+  background: #f9fafb;
+  opacity: 0.6;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.stage-name {
+  font-size: 12px;
+  line-height: 1.2;
+  margin-bottom: 2px;
+  font-weight: 500;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.stage-label.active .stage-name {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.stage-label.stalled .stage-name {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.stage-label.locked .stage-name {
+  color: #9ca3af;
+}
+
+.stage-duration {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.stage-label.active .stage-duration {
+  color: #3b82f6;
+}
+
+.stage-label.stalled .stage-duration {
+  color: #f59e0b;
+}
+
+.stage-label.locked .stage-duration {
+  color: #9ca3af;
+}
+
+/* 阶段进度文本 */
+.stage-progress-text {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.stage-label.active .stage-progress-text {
+  color: #3b82f6;
+}
+
+.stage-label.stalled .stage-progress-text {
+  color: #f59e0b;
+}
+
+.stage-label.locked .stage-progress-text {
+  color: #9ca3af;
+}
+
+/* 状态指示器 */
+.waiting-indicator {
+  display: block;
+  font-size: 9px;
+  color: #f59e0b;
+  font-weight: 600;
+  margin-top: 2px;
+  animation: blink 1.5s infinite;
+}
+
+.locked-indicator {
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+/* 里程碑标记样式 */
+.milestone-marker {
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+/* 待完成里程碑 */
+.milestone-marker.pending {
+  background: #fef2f2;
+  border: 2px solid #ef4444;
+  animation: milestoneAlert 2s infinite;
+}
+
+.milestone-marker.pending .milestone-icon {
+  color: #ef4444;
+  font-size: 14px;
+  animation: blink 1.5s infinite;
+}
+
+/* 已完成里程碑 */
+.milestone-marker.completed {
+  background: #fef3c7;
+  border: 2px solid #fbbf24;
+}
+
+.milestone-marker.completed .milestone-icon {
+  color: #fbbf24;
+  font-size: 14px;
+}
+
+.milestone-marker:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 可点击的里程碑样式 */
+.milestone-marker.clickable {
+  cursor: pointer;
+}
+
+.milestone-marker.clickable:hover {
+  transform: translateY(-50%) scale(1.15);
+}
+
+.milestone-marker.clickable.pending:hover {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.milestone-marker.clickable.completed:hover {
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+.milestone-label {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.milestone-marker:hover .milestone-label {
+  opacity: 1;
+}
+
+/* 停滞状态警示框 */
+.milestone-blockage-alert {
+  margin-top: 12px;
+  padding: 12px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 6px;
+  animation: alertGlow 3s infinite;
+}
+
+.alert-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.alert-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.alert-text {
+  flex: 1;
+}
+
+.alert-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  margin-bottom: 4px;
+}
+
+.alert-message {
+  font-size: 11px;
+  color: #a16207;
+  margin-bottom: 4px;
+}
+
+.alert-action {
+  font-size: 11px;
+  color: #a16207;
+}
+
+.alert-link {
+  color: #3b82f6;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.alert-link:hover {
+  color: #1d4ed8;
+}
+
+/* 当前状态描述样式 */
+.current-stage-description {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.current-stage-name {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.current-stage-desc {
+  color: var(--text-secondary);
+}
+
+.blockage-warning {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+/* 动画效果 */
+@keyframes stalledPulse {
+  0%, 100% {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+  }
+}
+
+@keyframes milestoneAlert {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes alertGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+  }
+}
+
+/* 统一进度条 */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+  transition: width 0.5s ease;
+  border-radius: 3px;
+}
+
+/* 进度条上的阶段分割线 */
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%; /* 生涯启航阶段结束 (4/20 = 20%) */
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 60%; /* 能力跃升阶段结束 (12/20 = 60%) */
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+/* 能力跃升阶段强调样式 */
+.stage-wrapper:nth-child(2) .stage-label {
+  position: relative;
+}
+
+.stage-wrapper:nth-child(2) .stage-label::before {
+  content: '×2';
+  position: absolute;
+  top: -8px;
+  right: 4px;
+  font-size: 9px;
+  color: #3b82f6;
+  background: #dbeafe;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.current-stage-description {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .stage-progress-bar {
+    height: 50px;
+  }
+  
+  .stage-name {
+    font-size: 11px;
+  }
+  
+  .stage-duration {
+    font-size: 10px;
+  }
+  
+  .current-stage-description {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stage-progress-bar {
+    height: 45px;
+  }
+  
+  .stage-name {
+    font-size: 10px;
+  }
+  
+  .stage-duration {
+    font-size: 9px;
+  }
+}
+
+/* Dashboard网格布局 - 按用户要求的两排布局 */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 三列等宽布局 */
+  grid-template-rows: auto auto; /* 两行布局 */
+  gap: 20px;
+  grid-auto-rows: max-content;
+  margin-top: 16px;
+}
+
+/* 组件定位 */
+.module-start-class {
+  grid-column: 1; /* 第一排第一列 */
+  grid-row: 1; /* 第一行 */
+}
+
+.module-quick-access {
+  grid-column: 2; /* 第一排第二列 */
+  grid-row: 1; /* 第一行 */
+}
+
+.module-calendar-task {
+  grid-column: 3; /* 第三列 */
+  grid-row: 1 / 3; /* 跨越两排，竖着一体 */
+}
+
+.module-study-status {
+  grid-column: 1; /* 第二排第一列 */
+  grid-row: 2; /* 第二行 */
+}
+
+.module-class-rank {
+  grid-column: 2; /* 第二排第二列 */
+  grid-row: 2; /* 第二行 */
+}
+
+/* 各个模块的样式 */
+.dashboard-module {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 不同模块的高度和样式设置 */
+.module-start-class {
+  height: 320px; /* 调整为单行高度 */
+  border-left: 3px solid var(--primary-color); /* 重要模块左侧强调线 */
+  position: relative;
+}
+
+.module-start-class::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  border-radius: 8px 8px 0 0;
+}
+
+.module-quick-access {
+  height: 320px; /* 与开始上课模块同高 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.module-quick-access:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.module-study-status,
+.module-class-rank {
+  height: 280px; /* 第二排模块高度 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.module-study-status:hover,
+.module-class-rank:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.module-class-rank {
+  background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+}
+
+.module-calendar-task {
+  height: 620px; /* 跨两排的总高度 (320px + 280px + 20px gap) */
+  border-left: 2px solid var(--primary-color);
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* 主要模块标题样式增强 */
+.module-start-class .module-header,
+.module-calendar-task .module-header {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.module-start-class .module-title,
+.module-calendar-task .module-title {
+  color: var(--primary-color);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.module-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* 滚动条样式优化 */
+.module-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.module-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.module-content::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 2px;
+}
+
+.module-content::-webkit-scrollbar-thumb:hover {
+  background-color: #d1d5db;
+}
+
+.module-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.module-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* 开始上课模块 */
+.course-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: all 0.15s ease;
+}
+
+.course-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 可点击的课程项 */
+.course-item-clickable {
+  background: #f8fafc;
+}
+
+.course-item-clickable:hover {
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+/* 禁用状态的课程项 */
+.course-item-disabled {
+  background: #f9fafb;
+  opacity: 0.6;
+}
+
+.course-item-disabled .course-info h4,
+.course-item-disabled .course-info p {
+  color: #999 !important;
+}
+
+/* 已结束课程的特殊样式 */
+.course-item-disabled:has(.course-info h4:contains("已结束")) {
+  opacity: 0.5;
+}
+
+/* 即将开始课程的特殊样式 */
+.course-item-disabled:has(.course-info p:contains("即将开始")) {
+  background: #fffbeb;
+  opacity: 0.8;
+}
+
+/* 可点击的待办事项 */
+.todo-item-clickable {
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.todo-item-clickable:hover {
+  background: #f5f5f5;
+}
+
+.course-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+}
+
+.course-info h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.course-info p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* 快捷入口模块 */
+.quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.quick-item {
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.quick-item:hover {
+  background: #eff6ff;
+  border-color: var(--primary-color);
+}
+
+.quick-item h4 {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* 日历模块 */
+.calendar {
+  width: 100%;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #f8fafc;
+  color: var(--text-secondary);
+}
+
+.calendar-day:hover {
+  background: #e5e7eb;
+}
+
+.calendar-day.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.calendar-day.today {
+  background: #fef3c7;
+  color: #d97706;
+  font-weight: 600;
+}
+
+/* 学习情况模块 */
+.module-study-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.progress-circle {
+  width: 80px;
+  height: 80px;
+  margin: 24px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 同心环进度条样式 */
+.concentric-progress-circle {
+  width: 90px;
+  height: 90px;
+  margin: 16px auto 20px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.concentric-progress-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.concentric-progress-text .my-hours {
+  font-size: 14px;
+  font-weight: 700;
+  color: #10b981;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.concentric-progress-text .vs-text {
+  font-size: 8px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1;
+  margin: 1px 0;
+}
+
+.concentric-progress-text .class-avg {
+  font-size: 12px;
+  font-weight: 600;
+  color: #3b82f6;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+/* 图例样式 */
+.study-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 0 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-color.my-color {
+  background: #10b981;
+}
+
+.legend-color.class-color {
+  background: #3b82f6;
+}
+
+.legend-text {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 对比分析样式 */
+.study-analysis {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.analysis-text {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+.analysis-text.positive {
+  color: #065f46;
+  background: #d1fae5;
+}
+
+.analysis-text.negative {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.analysis-text.neutral {
+  color: #374151;
+  background: #f3f4f6;
+}
+
+/* 班级排名模块 */
+.module-class-rank .rank-list {
+  padding: 8px 0;
+}
+
+.rank-list {
+  space-y: 8px;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.rank-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: var(--text-secondary);
+}
+
+.rank-number.gold {
+  background: #fbbf24;
+  color: white;
+}
+
+.rank-number.silver {
+  background: #d1d5db;
+  color: white;
+}
+
+.rank-number.bronze {
+  background: #cd7c2f;
+  color: white;
+}
+
+.rank-info {
+  flex: 1;
+}
+
+.rank-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.rank-score {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* 事项模块 */
+.task-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-teacher {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.task-time {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.task-course {
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr; /* 两列布局 */
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+  }
+  
+  .module-start-class {
+    grid-column: 1;
+    grid-row: 1;
+    height: 300px;
+  }
+  
+  .module-quick-access {
+    grid-column: 2;
+    grid-row: 1;
+    height: 300px;
+  }
+  
+  .module-study-status {
+    grid-column: 1;
+    grid-row: 2;
+    height: 260px;
+  }
+  
+  .module-class-rank {
+    grid-column: 2;
+    grid-row: 2;
+    height: 260px;
+  }
+  
+  .module-calendar-task {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    height: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  
+  .module-start-class {
+    grid-column: 1;
+    grid-row: 1;
+    height: 280px;
+  }
+  
+  .module-quick-access {
+    grid-column: 2;
+    grid-row: 1;
+    height: 280px;
+  }
+  
+  .module-study-status {
+    grid-column: 1;
+    grid-row: 2;
+    height: 240px;
+  }
+  
+  .module-class-rank {
+    grid-column: 2;
+    grid-row: 2;
+    height: 240px;
+  }
+  
+  .module-calendar-task {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  
+  /* 移动端重置所有定位 */
+  .module-start-class,
+  .module-study-status,
+  .module-quick-access,
+  .module-class-rank,
+  .module-calendar-task {
+    grid-column: 1;
+    grid-row: auto;
+    height: auto;
+    margin-top: 0;
+    border-left: none; /* 移除左侧强调线 */
+  }
+  
+  .module-start-class {
+    min-height: 320px;
+    border-top: 3px solid var(--primary-color); /* 改为顶部强调线 */
+  }
+  
+  .module-quick-access,
+  .module-study-status,
+  .module-class-rank {
+    min-height: 240px;
+  }
+  
+  .module-calendar-task {
+    min-height: 400px;
+    border-top: 2px solid var(--primary-color);
+  }
+  
+  /* 移动端标题调整 */
+  .module-start-class .module-title,
+  .module-calendar-task .module-title {
+    font-size: 16px;
+  }
+  
+  .module-title {
+    font-size: 15px;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 12px;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-grid {
+    gap: 12px;
+    margin-top: 8px;
+  }
+  
+  .dashboard-module {
+    padding: 16px;
+    border-radius: 6px;
+  }
+  
+  .module-start-class {
+    min-height: 280px;
+  }
+  
+  .module-quick-access,
+  .module-study-status,
+  .module-class-rank {
+    min-height: 200px;
+  }
+  
+  .module-calendar-task {
+    min-height: 320px;
+  }
+  
+  .module-title {
+    font-size: 14px;
+  }
+  
+  .module-start-class .module-title,
+  .module-calendar-task .module-title {
+    font-size: 15px;
+  }
+  
+  .main-content {
+    padding: 8px;
+  }
+} 
+
+/* Dashboard专用事项悬浮窗样式 - 使用全局z-index系统 */
+.dashboard-event-tooltip {
+  background: #fefefe;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
+  width: 280px;
+  max-height: 300px;
+  overflow: hidden;
+  opacity: 0;
+  animation: dashboardTooltipFadeIn 150ms ease-out forwards;
+  border: 1px solid #f0f0f0;
+  z-index: var(--z-tooltip); /* 使用提示框层级，低于消息弹窗 */
+}
+
+.dashboard-event-tooltip-arrow {
+  position: absolute;
+  top: -6px;
+  left: 20px;
+  width: 12px;
+  height: 12px;
+  background: #fefefe;
+  border: 1px solid #f0f0f0;
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(45deg);
+}
+
+.dashboard-event-tooltip-header {
+  padding: 14px 16px 10px 16px;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-event-tooltip-header h4 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.dashboard-event-count {
+  font-size: 11px;
+  color: #777;
+  background: #f5f7fa;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.dashboard-event-tooltip-content {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.dashboard-event-item {
+  padding: 10px 16px;
+  position: relative;
+  border-left: 2px solid transparent;
+  transition: background-color 150ms ease;
+}
+
+.dashboard-event-item:hover {
+  background-color: #fbfbfb;
+}
+
+.dashboard-event-time {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 3px;
+  font-weight: 400;
+}
+
+.dashboard-event-title {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.dashboard-event-description {
+  font-size: 11px;
+  color: #888;
+  line-height: 1.3;
+}
+
+.dashboard-event-type-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  opacity: 0.6;
+}
+
+/* Dashboard悬浮窗动画 */
+@keyframes dashboardTooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 有事项的日期样式优化 */
+.calendar-day.has-event:hover {
+  background-color: #f0f7ff;
+  transform: scale(1.05);
+  transition: all 150ms ease;
+}
+
+/* 日历任务模块样式已在上方统一设置 */
+
+.calendar-task-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0;
+}
+
+.calendar-section {
+  flex: 0 0 auto;
+  padding-bottom: 16px;
+}
+
+.section-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 16px 0;
+  flex-shrink: 0;
+}
+
+.tasks-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* 日历导航头部 */
+.calendar-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.month-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.nav-button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-color);
+  background: white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.nav-button:hover {
+  background: #f3f4f6;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* 改进的日期状态样式 */
+.calendar-day.selected {
+  background: var(--primary-color) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.calendar-day.today:not(.selected) {
+  position: relative;
+}
+
+.calendar-day.today:not(.selected)::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #d97706;
+  border-radius: 50%;
+}
+
+/* 事项列表样式 */
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.tasks-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.tasks-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.tasks-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.15s ease;
+}
+
+.task-item:hover {
+  background: #f1f5f9;
+  transform: translateX(2px);
+}
+
+.task-time {
+  flex-shrink: 0;
+  width: 60px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.task-meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.task-type {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.task-type.class,
+.task-type.event {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.task-type.作业提交 {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.task-type.实验报告 {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.task-type.课程设计 {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.task-status {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.task-status.completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.task-status.in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.task-status.pending {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.task-description {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.task-teacher {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* 加载状态 */
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  color: var(--text-muted);
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f4f6;
+  border-top: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 13px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 

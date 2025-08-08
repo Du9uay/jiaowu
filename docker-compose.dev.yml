@@ -1,0 +1,23 @@
+# Docker Compose 配置 - 开发环境
+name: jiaowu-prototype-dev
+
+services:
+  jiaowu-frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: jiaowu-prototype-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # 挂载源代码目录实现热重载
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./vite.config.js:/app/vite.config.js
+      # 排除 node_modules 避免冲突
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    command: pnpm dev --host 0.0.0.0 

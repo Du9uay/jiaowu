@@ -1,0 +1,317 @@
+/* 简历修改历史弹窗样式 */
+.resume-history-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resume-history-modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 弹窗头部 */
+.resume-history-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafbff;
+}
+
+.resume-history-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.resume-history-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: 300;
+  color: #666666;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 150ms ease;
+}
+
+.resume-history-modal-close:hover {
+  background: #f0f0f0;
+  color: #333333;
+}
+
+/* 弹窗主体 */
+.resume-history-modal-body {
+  padding: 24px 32px;
+  max-height: calc(90vh - 160px);
+  overflow-y: auto;
+}
+
+/* 历史信息 */
+.history-info {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #1e40af;
+}
+
+.resume-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.current-version {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* 时间线 */
+.history-timeline {
+  position: relative;
+}
+
+.history-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 24px;
+}
+
+.history-item:last-child {
+  margin-bottom: 0;
+}
+
+.history-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: 3px solid #1e40af;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.history-icon {
+  font-size: 16px;
+}
+
+.history-line {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  width: 2px;
+  height: calc(100% - 16px);
+  background: #e0e0e0;
+  z-index: 1;
+}
+
+.history-content {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 4px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.history-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-type {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.version-tag {
+  background: #e0edff;
+  color: #1e40af;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.editor-badge {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.editor-student {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.editor-teacher {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.history-date {
+  font-size: 13px;
+  color: #666666;
+}
+
+.history-changes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.change-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.change-bullet {
+  color: #1e40af;
+  font-weight: 600;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.change-text {
+  font-size: 14px;
+  color: #333333;
+  flex: 1;
+}
+
+/* 弹窗底部 */
+.resume-history-modal-footer {
+  padding: 20px 32px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafbff;
+}
+
+.history-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666666;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .resume-history-modal-overlay {
+    padding: 10px;
+  }
+  
+  .resume-history-modal-content {
+    max-height: 95vh;
+  }
+  
+  .resume-history-modal-header {
+    padding: 16px 20px;
+  }
+  
+  .resume-history-modal-body {
+    padding: 20px;
+  }
+  
+  .history-item {
+    padding-left: 50px;
+  }
+  
+  .history-dot {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .history-line {
+    left: 16px;
+    top: 32px;
+  }
+  
+  .history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .history-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

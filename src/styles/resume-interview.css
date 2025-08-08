@@ -1,0 +1,1112 @@
+/* 我的简历与面试题页面样式 - 遵循零线原则与呼吸感设计 */
+
+.resume-interview-page {
+  min-height: calc(100vh - 80px);
+  background: #ffffff;
+  padding: 32px;
+}
+
+/* 页面标题 - 意图驱动的信息层级 */
+.page-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 500; /* Medium字重 */
+  color: #111111; /* L1层级 */
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+}
+
+/* 搜索容器 */
+.search-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
+  background: #ffffff;
+  transition: border-color 150ms ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.search-input::placeholder {
+  color: #999999;
+}
+
+/* 顶部导航栏 - 固定悬浮设计 */
+.navigation-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0 -32px 48px -32px;
+  padding: 16px 32px;
+}
+
+.industry-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #666666; /* L2层级 */
+  cursor: pointer;
+  transition: all 150ms ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: #f8f9fa;
+  color: #333333;
+}
+
+.nav-item.active {
+  background: #f0f6ff;
+  color: #1e40af;
+  font-weight: 500;
+}
+
+/* 行业段落容器 */
+.industries-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.industry-section {
+  margin-bottom: 80px; /* 段落间慷慨留白 */
+}
+
+.section-header {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #111111; /* L1层级 */
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* 段落内容 - 两列布局 - 强制覆盖其他样式 */
+.resume-interview-page .section-content {
+  display: grid !important;
+  grid-template-columns: 1.5fr 1fr !important; /* 两列布局：简历列表更宽，面试题较窄 */
+  gap: 48px !important;
+  align-items: start !important;
+  flex-direction: initial !important; /* 覆盖flex-direction */
+}
+
+/* 容器标题 */
+.container-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 24px 0;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.position-count {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.selected-position-indicator {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1e40af;
+}
+
+/* 左侧：岗位网格 */
+.positions-container {
+  width: 100%;
+}
+
+.positions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; /* 基于8px的间距系统 */
+}
+
+.position-card {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  min-height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.position-card:hover {
+  border-color: #e0e7ff;
+  background: #fafbff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.position-card.selected {
+  border-color: #1e40af;
+  background: #f0f6ff;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.position-card.selected:hover {
+  border-color: #1e40af;
+  background: #e0edff;
+}
+
+.position-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.position-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111111; /* L1层级 */
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.position-company {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666; /* L2层级 */
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.position-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.position-level {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999999; /* L3层级 */
+  background: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.position-salary {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e40af;
+  background: #f0f6ff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.position-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 64, 175, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.position-card:hover .position-hover-overlay {
+  opacity: 1;
+}
+
+.position-card.selected .position-hover-overlay {
+  display: none;
+}
+
+.view-details {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666666;
+}
+
+/* 右侧：钩子面试题 */
+.interview-container {
+  width: 100%;
+  border-left: 1px solid #f0f0f0; /* 添加左边框分隔线 */
+  padding-left: 24px; /* 增加左内边距 */
+}
+
+.interview-hooks {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hook-item {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 150ms ease;
+}
+
+.hook-item:hover {
+  border-color: #e0e7ff;
+  background: #fafbff;
+}
+
+.hook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.hook-position {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.hook-company {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999999; /* L3层级 */
+}
+
+.hook-questions {
+  margin-bottom: 16px;
+}
+
+.hook-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 150ms ease;
+}
+
+.hook-question:hover {
+  background: #f8f9fa;
+}
+
+.question-number {
+  font-size: 13px;
+  font-weight: 500;
+  color: #666666;
+  min-width: 16px;
+}
+
+.question-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #555555;
+  line-height: 1.4;
+}
+
+/* 无选择提示 */
+.no-selection-hint {
+  text-align: center;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.no-selection-hint p {
+  margin: 0;
+  color: #666666;
+  font-size: 14px;
+}
+
+/* 选中岗位的面试题区域 */
+.selected-position-interview {
+  background: #ffffff;
+  border: 1px solid #e0e7ff;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.position-detail-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.position-basic-info h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0 0 12px 0;
+}
+
+.company-badge, .level-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.company-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.level-badge {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.interview-questions-section h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 16px 0;
+}
+
+.questions-list {
+  margin-bottom: 20px;
+}
+
+.question-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.question-item:hover {
+  background: #f0f6ff;
+}
+
+.question-item .question-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+  min-width: 20px;
+}
+
+.question-item .question-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.view-all-questions-btn {
+  background: #1e40af;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 150ms ease;
+  width: 100%;
+}
+
+.view-all-questions-btn:hover {
+  background: #1e3a8a;
+}
+
+.view-all-button {
+  background: none;
+  border: 1px solid #e0e0e0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  cursor: pointer;
+  transition: all 150ms ease;
+  width: 100%;
+}
+
+.view-all-button:hover {
+  border-color: #d0d0d0;
+  background: #f8f9fa;
+  color: #333333;
+}
+
+/* 响应式适配 */
+@media (max-width: 1024px) {
+  .resume-interview-page .section-content {
+    display: grid !important;
+    grid-template-columns: 1.4fr 1fr !important; /* 保持左右布局，调整比例 */
+    gap: 24px !important;
+    flex-direction: initial !important;
+  }
+  
+  .positions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-interview-page {
+    padding: 24px 16px;
+  }
+  
+  .navigation-container {
+    margin: 0 -16px 32px -16px;
+    padding: 12px 16px;
+  }
+  
+  .industry-navigation {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 8px 0;
+  }
+  
+  .nav-item {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .resume-interview-page .section-content {
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr !important; /* 移动端保持左右布局，左侧稍大 */
+    gap: 16px !important;
+    flex-direction: initial !important;
+  }
+  
+  .positions-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .industry-section {
+    margin-bottom: 48px;
+  }
+  
+  .search-container {
+    max-width: 100%;
+  }
+  
+  .container-title {
+    font-size: 16px; /* 稍微缩小标题 */
+    margin-bottom: 16px;
+  }
+  
+  .position-count, .selected-position-indicator {
+    font-size: 12px;
+  }
+  
+  .selected-position-interview {
+    padding: 16px;
+  }
+  
+  .position-hover-overlay {
+    display: none; /* 移动端不显示悬浮效果 */
+  }
+  
+  .interview-container {
+    padding-left: 16px; /* 移动端减少左内边距 */
+  }
+}
+
+@media (max-width: 600px) {
+  .resume-interview-page .section-content {
+    display: grid !important;
+    grid-template-columns: 1.1fr 1fr !important; /* 小屏幕保持左右布局 */
+    gap: 12px !important;
+    flex-direction: initial !important;
+  }
+  
+  .interview-container {
+    padding-left: 12px; /* 小屏幕进一步减少左内边距 */
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .resume-interview-page .section-content {
+    display: grid !important;
+    grid-template-columns: 1fr 0.9fr !important; /* 超小屏幕稍微调整比例 */
+    gap: 8px !important;
+    flex-direction: initial !important;
+  }
+  
+  .container-title {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .position-card,
+  .hook-item {
+    padding: 14px;
+  }
+  
+  .position-name {
+    font-size: 14px;
+  }
+  
+  .position-company {
+    font-size: 12px;
+  }
+  
+  .hook-position {
+    font-size: 12px;
+  }
+  
+  .hook-company {
+    font-size: 11px;
+  }
+  
+  .question-text {
+    font-size: 12px;
+  }
+  
+  .interview-container {
+    padding-left: 8px; /* 超小屏幕最小内边距 */
+    border-left-color: #f8f8f8; /* 更淡的分隔线 */
+  }
+}
+
+/* 简历详情区域样式 */
+.resume-container {
+  width: 100%;
+}
+
+.selected-position-resume {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.resume-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.resume-section {
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 20px;
+}
+
+.resume-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.resume-section h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.resume-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.info-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.info-value {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+}
+
+.experience-item {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.position-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1e40af;
+}
+
+.experience-duration {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  margin-bottom: 12px;
+}
+
+.experience-responsibilities ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.experience-responsibilities li {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: #e0edff;
+  color: #1e40af;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.resume-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background: #f8f9fa;
+  border: 1px dashed #e0e0e0;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.resume-empty .no-selection-hint {
+  text-align: center;
+}
+
+.resume-empty .no-selection-hint p {
+  font-size: 16px;
+  color: #666666;
+  margin: 0;
+}
+
+/* 面试题区域调整 */
+.industry-interview-questions {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.questions-section h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 16px 0;
+}
+
+/* 简历弹窗样式 */
+.resume-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resume-modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.resume-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafbff;
+}
+
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-edit {
+  background: #1e40af;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.btn-edit:hover {
+  background: #1e3a8a;
+}
+
+.btn-history {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.btn-history:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.resume-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.resume-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: 300;
+  color: #666666;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 150ms ease;
+}
+
+.resume-modal-close:hover {
+  background: #f0f0f0;
+  color: #333333;
+}
+
+.resume-modal-body {
+  padding: 32px;
+  max-height: calc(90vh - 120px);
+  overflow-y: auto;
+}
+
+/* 弹窗内的职位基本信息 */
+.resume-modal-body .position-detail-header {
+  margin-bottom: 32px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.resume-modal-body .position-basic-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resume-modal-body .position-basic-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.resume-modal-body .company-badge {
+  background: #1e40af;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.resume-modal-body .level-badge {
+  background: #10b981;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* 弹窗内的简历区域样式 */
+.resume-modal-body .resume-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.resume-modal-body .resume-section {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 24px;
+}
+
+.resume-modal-body .resume-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.resume-modal-body .resume-section h5 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resume-modal-body .resume-section h5::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: #1e40af;
+  border-radius: 2px;
+}
+
+.resume-modal-body .resume-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resume-modal-body .info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.resume-modal-body .info-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #555555;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.resume-modal-body .info-value {
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
+  flex: 1;
+}
+
+.resume-modal-body .experience-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.resume-modal-body .experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resume-modal-body .company-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.resume-modal-body .position-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e40af;
+}
+
+.resume-modal-body .experience-duration {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  margin-bottom: 16px;
+}
+
+.resume-modal-body .experience-responsibilities ul {
+  margin: 0;
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.resume-modal-body .experience-responsibilities li {
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.resume-modal-body .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resume-modal-body .skill-tag {
+  background: #e0edff;
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  border: 1px solid #b8daff;
+  transition: all 150ms ease;
+}
+
+.resume-modal-body .skill-tag:hover {
+  background: #1e40af;
+  color: #ffffff;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .resume-modal-overlay {
+    padding: 10px;
+  }
+  
+  .resume-modal-content {
+    max-height: 95vh;
+  }
+  
+  .resume-modal-header {
+    padding: 16px 20px;
+  }
+  
+  .resume-modal-body {
+    padding: 20px;
+  }
+  
+  .resume-modal-body .position-basic-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+} 

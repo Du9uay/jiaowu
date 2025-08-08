@@ -1,0 +1,20 @@
+# Docker Compose 配置 - 生产环境
+name: jiaowu-prototype
+
+services:
+  jiaowu-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jiaowu-prototype
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 

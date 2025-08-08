@@ -1,0 +1,219 @@
+/**
+ * EcoTree 组件样式 - React版本
+ * 从Vue版本转换而来，移除了Vue特有的样式语法
+ */
+
+/* Tree View Container Styles */
+.tree-view-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+}
+
+.tree-view-scroll-wrapper {
+  width: 100%;
+  flex-grow: 1;
+  overflow: auto;
+  /* Enable both horizontal and vertical scrolling */
+  position: relative;
+  min-height: 0;
+  /* 防止 flex 项目溢出其容器 */
+  display: flex;
+  /* 使用flex布局使子元素能够正确填充 */
+  flex-direction: column;
+  /* 垂直排列 */
+}
+
+.tree-view-tree-chart {
+  min-width: 100%;
+  height: auto !important;
+  /* 强制使用自动高度 */
+  min-height: 100%;
+  /* 确保至少占满容器 */
+  flex: 1 0 auto;
+  /* 允许伸展但不允许收缩 */
+}
+
+.tree-view-tree-chart svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  /* 确保SVG不会超出容器 */
+  height: auto !important;
+  /* 强制高度自适应 */
+}
+
+/* Node and Link Styles */
+.tree-view-link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.2px;
+  transition: stroke 0.3s, stroke-width 0.3s;
+}
+
+.tree-view-node-marker {
+  transition: filter 0.2s ease, r 0.2s ease;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.tree-view-left-marker {
+  cursor: default;
+}
+
+.tree-view-label-bg {
+  transition: fill 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+}
+
+.tree-view-node:hover .tree-view-label-bg {
+  filter: brightness(1.1);
+  stroke-width: 1.5;
+}
+
+.tree-view-node-label {
+  font-family: "Alibaba-PuHuiTi-Regular", sans-serif;
+  pointer-events: none;
+  fill: #333;
+  transition: fill 0.2s ease;
+}
+
+.tree-view-toggle-bg {
+  transition: filter 0.2s ease, r 0.2s ease;
+  cursor: pointer;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.tree-view-toggle-bg:hover {
+  filter: brightness(1.2);
+  r: 13;
+}
+
+.tree-view-toggle-icon-fo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tree-view-color-block {
+  transition: filter 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  rx: 3;
+  ry: 3;
+}
+
+.tree-view-node-icon {
+  overflow: visible;
+  pointer-events: none;
+}
+
+.tree-view-node:hover .tree-view-node-icon img {
+  transform: scale(1.1);
+}
+
+.depth-0 .tree-view-node-label {
+  font-weight: bold;
+}
+
+.depth-1 .tree-view-node-label {
+  font-weight: bold;
+}
+
+/* Loading State Styles */
+.chart-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  z-index: 10;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #0275f2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #0275f2;
+  font-family: "Alibaba-PuHuiTi-SemiBold", sans-serif;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Error State Styles */
+.chart-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}
+
+.error-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.error-text {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+  font-family: "Alibaba-PuHuiTi-SemiBold", sans-serif;
+}
+
+.retry-button {
+  padding: 8px 20px;
+  background-color: #0275f2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.retry-button:hover {
+  background-color: #0262d3;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

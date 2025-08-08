@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center Item Layout Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f6f9;
+        }
+
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .center-panel {
+            background: white;
+            padding: 64px 48px;
+            border-radius: 16px;
+            width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .center-section {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border: 2px solid #efefef;
+            color: #333;
+            transition: all 0.2s ease;
+            background: #3b82f6;
+            color: white;
+        }
+
+        .section-content {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .center-item {
+            background: #eff6ff;
+            padding: 12px 48px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .center-item:hover {
+            background: #dbeafe;
+        }
+
+        .center-item.checked-course-item {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .item-content {
+            background: white;
+            padding: 8px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+            border: 1px solid #e5e7eb;
+        }
+
+        .center-item.checked-course-item .item-content {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .status {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 6px;
+            color: #0c4a6e;
+        }
+
+        .resize-controls {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .resize-btn {
+            margin: 0 10px;
+            padding: 8px 16px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .resize-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* 大屏幕确保布局稳定性 */
+        @media (min-width: 1601px) {
+            .section-content {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            
+            .center-item {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 0 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .center-panel {
+                width: 100%;
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Center Item 布局测试</h1>
+        
+        <div class="status">
+            <strong>当前窗口宽度：</strong> <span id="window-width"></span>px
+            <br>
+            <strong>测试说明：</strong> 无论窗口宽度如何变化，下方的蓝色项目都应该保持垂直列表排布
+        </div>
+
+        <div class="resize-controls">
+            <button class="resize-btn" onclick="resizeWindow(800)">小屏 (800px)</button>
+            <button class="resize-btn" onclick="resizeWindow(1200)">中屏 (1200px)</button>
+            <button class="resize-btn" onclick="resizeWindow(1600)">大屏 (1600px)</button>
+            <button class="resize-btn" onclick="resizeWindow(1920)">超大屏 (1920px)</button>
+        </div>
+
+        <div class="center-panel">
+            <div class="center-section">
+                <div class="section-header">
+                    <span>产业认知课</span>
+                </div>
+                <div class="section-content">
+                    <div class="center-item checked-course-item" data-itype="center-item" data-unit-id="1">
+                        <div class="item-content">互联网行业概述</div>
+                    </div>
+                    <div class="center-item" data-itype="center-item" data-unit-id="2">
+                        <div class="item-content">技术架构基础</div>
+                    </div>
+                    <div class="center-item" data-itype="center-item" data-unit-id="3">
+                        <div class="item-content">前端开发基础</div>
+                    </div>
+                    <div class="center-item" data-itype="center-item" data-unit-id="4">
+                        <div class="item-content">后端开发基础</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateWindowWidth() {
+            document.getElementById('window-width').textContent = window.innerWidth;
+        }
+
+        function resizeWindow(width) {
+            // 注意：在实际浏览器中，JavaScript不能调整窗口大小
+            // 这里只是更新显示的宽度值作为演示
+            alert(`请手动调整浏览器窗口宽度到 ${width}px 左右，然后观察布局变化`);
+        }
+
+        // 监听窗口大小变化
+        window.addEventListener('resize', updateWindowWidth);
+        
+        // 初始化显示
+        updateWindowWidth();
+
+        // 添加点击事件
+        document.querySelectorAll('.center-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除其他项目的选中状态
+                document.querySelectorAll('.center-item').forEach(otherItem => {
+                    otherItem.classList.remove('checked-course-item');
+                });
+                // 添加当前项目的选中状态
+                this.classList.add('checked-course-item');
+            });
+        });
+    </script>
+</body>
+</html>

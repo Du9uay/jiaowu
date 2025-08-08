@@ -1,0 +1,1261 @@
+/* 企业内推岗位页面样式 */
+.company-jobs-page {
+  min-height: calc(100vh - 80px);
+  background: var(--bg-color);
+  padding: 32px;
+}
+
+/* 页面标题 - 极简设计 */
+.page-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 主要内容区域 */
+.jobs-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* 区域卡片样式 */
+.section-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  height: fit-content;
+  transition: all 200ms ease;
+}
+
+.section-card:hover {
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+
+/* 企业内推岗位区域 */
+.company-positions-section {
+  grid-row: 1 / 3;
+}
+
+.company-positions-section .section-card {
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.company-positions-section .positions-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+
+/* 自定义滚动条样式 */
+.company-positions-section .positions-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.company-positions-section .positions-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.company-positions-section .positions-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.company-positions-section .positions-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.section-header {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.positions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.position-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 150ms ease;
+  position: relative;
+  word-wrap: break-word;
+  overflow: visible;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.position-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  z-index: 2; /* 确保悬停时的卡片在上层 */
+}
+
+.position-card.recommended {
+  border-color: var(--primary-color);
+  background: linear-gradient(135deg, #eff6ff, var(--card-bg));
+}
+
+.position-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.company-info {
+  flex: 1;
+}
+
+.company-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position-type {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+.recommended-badge {
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.position-details {
+  margin-bottom: 12px;
+}
+
+.position-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position-salary {
+  font-size: 14px;
+  font-weight: 500;
+  color: #10b981;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.position-deadline {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+.position-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.position-tag {
+  background: #f3f4f6;
+  color: var(--text-primary);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+
+.position-actions {
+  text-align: right;
+  margin-top: auto;
+  padding-top: 12px;
+  flex-shrink: 0;
+}
+
+.apply-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 32px;
+}
+
+.apply-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* 内推岗位面试区域 */
+.internal-positions-section {
+  margin-bottom: 24px;
+}
+
+.internal-positions-section .section-card {
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+}
+
+.internal-positions-section .internal-positions-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* 内推岗位面试区域滚动条样式 */
+.internal-positions-section .internal-positions-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.internal-positions-section .internal-positions-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.internal-positions-section .internal-positions-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.internal-positions-section .internal-positions-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.internal-positions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.internal-position-card {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: none;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 150ms ease;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.internal-position-card:hover {
+  background: #f1f5f9;
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.internal-position-info {
+  flex: 1;
+}
+
+.position-company {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position-details {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.position-name {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.internal-positions-section .position-salary {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.internal-positions-section .position-deadline {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.interview-time {
+  font-size: 11px;
+  color: #3b82f6;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.internal-position-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.test-button {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.test-button:hover {
+  background: #d97706;
+}
+
+.position-status {
+  font-size: 11px;
+  font-weight: 500;
+  text-align: right;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.position-status.scheduled {
+  color: #3b82f6;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.position-status.location {
+  color: #f59e0b;
+  background: #fffbeb;
+  border-color: #fed7aa;
+}
+
+.position-status.completed {
+  color: #10b981;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+/* 岗位流程区域 */
+
+.job-flow-section .section-card {
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-flow-section .flow-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flow-container {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flow-step-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.step-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 2px solid #e5e7eb;
+  background: #f9fafb;
+  flex-shrink: 0;
+}
+
+.step-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
+
+.step-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* 流程步骤状态 */
+.step-completed .step-circle {
+  border-color: #10b981;
+  background: #10b981;
+}
+
+.step-completed .step-icon {
+  background: white;
+}
+
+.step-completed .step-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.step-current .step-circle {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  animation: pulse 2s infinite;
+}
+
+.step-current .step-icon {
+  background: white;
+}
+
+.step-current .step-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* 流程步骤颜色 */
+.step-blue .step-circle {
+  border-color: #3b82f6;
+}
+
+.step-blue.step-completed .step-circle,
+.step-blue.step-current .step-circle {
+  background: #3b82f6;
+}
+
+.step-green .step-circle {
+  border-color: #10b981;
+}
+
+.step-green.step-completed .step-circle,
+.step-green.step-current .step-circle {
+  background: #10b981;
+}
+
+.step-pink .step-circle {
+  border-color: #ec4899;
+}
+
+.step-pink.step-completed .step-circle,
+.step-pink.step-current .step-circle {
+  background: #ec4899;
+}
+
+.step-orange .step-circle {
+  border-color: #f59e0b;
+}
+
+.step-orange.step-completed .step-circle,
+.step-orange.step-current .step-circle {
+  background: #f59e0b;
+}
+
+.step-red .step-circle {
+  border-color: #ef4444;
+}
+
+.step-red.step-completed .step-circle,
+.step-red.step-current .step-circle {
+  background: #ef4444;
+}
+
+.flow-connector {
+  width: 2px;
+  height: 12px;
+  background: #e5e7eb;
+  margin-left: 11px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* 响应式适配 */
+@media (max-width: 1200px) {
+  .jobs-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .company-positions-section {
+    grid-row: auto;
+  }
+  
+  /* 中等屏幕上调整高度 */
+  .company-positions-section .section-card {
+    height: 600px;
+  }
+  
+  .internal-positions-section .section-card,
+  .job-flow-section .section-card {
+    height: auto;
+    min-height: 300px;
+  }
+  
+  .internal-positions-section .internal-positions-list {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-jobs-page {
+    padding: 24px 16px;
+  }
+  
+  .section-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .section-card:hover {
+    transform: none;
+  }
+  
+  /* 移动端取消固定高度限制 */
+  .company-positions-section .section-card,
+  .internal-positions-section .section-card,
+  .job-flow-section .section-card {
+    height: auto;
+  }
+  
+  .company-positions-section .positions-list,
+  .internal-positions-section .internal-positions-list {
+    overflow-y: visible;
+    max-height: 400px;
+    padding-bottom: 20px;
+  }
+  
+  .position-card {
+    padding: 16px;
+    margin-bottom: 0;
+  }
+  
+  .position-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .internal-position-card {
+    padding: 12px;
+  }
+}
+
+/* 弹窗组件样式 */
+
+/* 模态框遮罩层 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  backdrop-filter: blur(2px);
+}
+
+/* 岗位详情弹窗样式 */
+.job-detail-modal {
+  background: var(--card-bg);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh; /* 减少最大高度确保底部按钮不被截断 */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: modalSlideIn 0.3s ease-out;
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+/* 简历选择弹窗样式 */
+.resume-selection-modal {
+  background: var(--card-bg);
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 弹窗头部 */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 32px 20px 32px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.modal-title-section {
+  flex: 1;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.company-badge {
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 150ms ease;
+}
+
+.modal-close-btn:hover {
+  background: #f3f4f6;
+  color: var(--text-primary);
+}
+
+/* 弹窗内容 */
+.modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+  /* 确保内容区域不会挤压底部按钮区域 */
+  max-height: calc(85vh - 120px - 80px); /* 减去header和footer的高度 */
+}
+
+/* 岗位基本信息 */
+.job-basic-info {
+  margin-bottom: 24px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.info-value {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.info-value.salary {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.info-value.deadline {
+  color: #ef4444;
+}
+
+/* 岗位详情各个部分 */
+.job-tags-section,
+.job-description-section,
+.job-requirements-section,
+.company-benefits-section,
+.company-info-section {
+  margin-bottom: 24px;
+}
+
+.job-tags-section h3,
+.job-description-section h3,
+.job-requirements-section h3,
+.company-benefits-section h3,
+.company-info-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.job-tag {
+  background: #f3f4f6;
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+
+.job-description,
+.job-requirements,
+.company-description {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.job-description p,
+.company-description p {
+  margin: 0 0 12px 0;
+  white-space: pre-line;
+}
+
+.job-requirements ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.job-requirements li {
+  margin-bottom: 6px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.benefit-item {
+  background: #f8fafc;
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+/* 弹窗底部 */
+.modal-footer {
+  padding: 24px 32px 28px 32px; /* 增加底部padding确保按钮完整显示 */
+  border-top: 1px solid var(--border-color);
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+  flex-shrink: 0; /* 防止底部区域被压缩 */
+  position: relative;
+  z-index: 10; /* 确保底部在上层 */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 12px 24px; /* 增加按钮内边距 */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  min-height: 44px; /* 设置最小高度确保按钮完整 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 15; /* 确保按钮在最上层 */
+}
+
+.btn-secondary:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px; /* 增加按钮内边距 */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px; /* 设置最小高度确保按钮完整 */
+  position: relative;
+  z-index: 15; /* 确保按钮在最上层 */
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-primary.loading {
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 简历列表样式 */
+.resume-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.resume-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.resume-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.resume-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.resume-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.resume-card {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  position: relative;
+}
+
+.resume-card:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.resume-card.selected {
+  border-color: var(--primary-color);
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.resume-info {
+  flex: 1;
+}
+
+.resume-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.resume-target {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.resume-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.status-badge.active {
+  color: #10b981;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.status-badge.draft {
+  color: #f59e0b;
+  background: #fffbeb;
+  border-color: #fed7aa;
+}
+
+.status-badge.inactive {
+  color: #6b7280;
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.resume-details {
+  margin-bottom: 12px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.detail-value {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.resume-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.skill-tag {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.more-skills {
+  background: #f3f4f6;
+  color: var(--text-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.resume-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.view-resume-btn,
+.edit-resume-btn {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.view-resume-btn:hover,
+.edit-resume-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.selection-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.create-resume-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.create-resume-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 12px;
+  }
+  
+  .job-detail-modal,
+  .resume-selection-modal {
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 16px 20px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
+  
+  .modal-footer {
+    padding: 16px 20px 20px 20px;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .btn-secondary,
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .resume-card {
+    padding: 16px;
+  }
+  
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .resume-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+} 
