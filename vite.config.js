@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // 生产环境基础路径配置
-  base: './',
+  // 生产环境基础路径配置 - GitHub Pages需要仓库名作为base
+  base: process.env.NODE_ENV === 'production' ? '/jiaowu/' : '/',
   // 构建配置
   build: {
     outDir: 'dist',
